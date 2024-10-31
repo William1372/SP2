@@ -1,46 +1,49 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Author {
 
     private String name;
     private ArrayList<Title> titles;
 
-    public Author(String name) {
+    public Author(String name){
 
+        this.name = name;
+        this.titles = new ArrayList<>();
 
+    }
+    public void addTitle(Title title){
+
+        titles.add(title);
+
+    }
+    public float calculateTotalPay(){
+
+        double totalPay = 0.0;
+
+        for (Title title:titles){
+
+            double royalty = title.calculateRoyalty();
+            System.out.println("Royalty for "+title+": "+royalty);
+            totalPay += royalty;
+
+        }
+
+        return (float) totalPay;
 
     }
 
-    public void addTitle(Title){
+    @Override
+    public String toString(){
 
-        ArrayList<>
-
-    }
-
-    public ArrayList<Title> getTitles(){
-
-        return titles;
+        return "Author: " + name +
+                "\nTitles: " + titles;
 
     }
-
-    public void setTitles(ArrayList<Title> titles) {
-
-        this.titles = titles;
-
-    }
-
 
     public String getName() {
 
         return name;
 
     }
-
-    public void setName(String name) {
-
-        this.name = name;
-
-    }
-
 
 }
